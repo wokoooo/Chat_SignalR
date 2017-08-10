@@ -1,0 +1,25 @@
+﻿@using Web.Models
+@model MessageViewModel
+@{
+    ViewBag.Title = "SendNotification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>广播</h2>
+
+
+@using (Html.BeginForm("SendNotification", "Home", new { }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Message, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Message, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="发送" class="btn btn-default" />
+        </div>
+    </div>
+}
